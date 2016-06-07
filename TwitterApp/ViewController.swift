@@ -13,6 +13,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if checkUserLogin(){
+            self.moveToTimeLine()
+        }
         self.navigationItem.title = "TimeLine"
         let logInButton = TWTRLogInButton { (session, error) in
             if let unwrappedSession = session {
@@ -33,8 +36,25 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    private func moveToTimeLine(){
+    private func checkUserLogin() -> Bool{
+        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.ACCESS_TOKEN) != nil else{
+            return false
+        }
+        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.TWITTER_SECRET) != nil else{
+            return false
+        }
+        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID) != nil else{
+            return false
+        }
+        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_NAME) != nil else{
+            return false
+        }
+        return true
         
+    }
+    
+    private func moveToTimeLine(){
+        self.performSegueWithIdentifier("showTimeline", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

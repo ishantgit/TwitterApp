@@ -19,10 +19,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cVl-Dw-P6M"/>
+                    <connections>
+                        <segue destination="UBY-8o-1VB" kind="showDetail" identifier="showTimeline" id="j0d-4S-sxJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2d-dI-oG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3815" y="714"/>
+            <point key="canvasLocation" x="4300" y="698"/>
         </scene>
         <!--Twitter Timeline View Controller-->
         <scene sceneID="BhQ-Lg-Rn7">
@@ -47,7 +50,13 @@
                             <outlet property="delegate" destination="xUq-PT-Aia" id="apk-oY-UB6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="b1T-mW-bul"/>
+                    <navigationItem key="navigationItem" id="b1T-mW-bul">
+                        <barButtonItem key="rightBarButtonItem" title="POST" id="Tz6-Qe-eJr">
+                            <connections>
+                                <action selector="postTweetTapped:" destination="xUq-PT-Aia" id="0Ow-Su-y5p"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccB-VL-is3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

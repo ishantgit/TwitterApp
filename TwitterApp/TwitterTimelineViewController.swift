@@ -14,24 +14,40 @@ class TwitterTimelineViewController: TWTRTimelineViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if checkUserLogin(){
-            let client = TWTRAPIClient()
-            //let session = Twitter.sharedInstance()
-            let userName = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_NAME)
-            self.dataSource = TWTRUserTimelineDataSource(screenName: userName!, APIClient: client)
-        }else{
-            self.presentLoginController()
-        }
+        self.navigationItem.title = "TimeLine"
+        let client = TWTRAPIClient()
+        //let session = Twitter.sharedInstance()
+        let userName = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_NAME)
+        self.dataSource = TWTRUserTimelineDataSource(screenName: userName!, APIClient: client)
         
         // Do any additional setup after loading the view.
     }
     
     private func presentLoginController(){
         if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as? ViewController{
-            self.presentViewController(vc, animated: false, completion: nil)
+            self.showDetailViewController(vc, sender: nil)
         }
     }
 
+    @IBAction func postTweetTapped(sender: AnyObject) {
+        let composer = TWTRComposer()
+        
+        composer.setText("just setting up my Fabric")
+        
+        // Called from a UIViewController
+        composer.showFromViewController(self) { result in
+            if result == TWTRComposerResult.Cancelled {
+                print("Tweet composition cancelled")
+            }
+            else if result == TWTRComposerResult.Done{
+                self.refresh()
+            }
+            else {
+                print("Sending tweet!")
+            }
+        }
+    }
+    
     private func checkUserLogin() -> Bool{
         guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.ACCESS_TOKEN) != nil else{
             return false
