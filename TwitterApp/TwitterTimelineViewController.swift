@@ -31,8 +31,8 @@ class TwitterTimelineViewController: TWTRTimelineViewController {
 
     @IBAction func postTweetTapped(sender: AnyObject) {
         let composer = TWTRComposer()
-        
-        composer.setText("just setting up my Fabric")
+    
+        composer.setText("")
         
         // Called from a UIViewController
         composer.showFromViewController(self) { result in
@@ -48,22 +48,6 @@ class TwitterTimelineViewController: TWTRTimelineViewController {
         }
     }
     
-    private func checkUserLogin() -> Bool{
-        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.ACCESS_TOKEN) != nil else{
-            return false
-        }
-        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.TWITTER_SECRET) != nil else{
-            return false
-        }
-        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID) != nil else{
-            return false
-        }
-        guard NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_NAME) != nil else{
-            return false
-        }
-        return true
-        
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

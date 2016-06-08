@@ -20,7 +20,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cVl-Dw-P6M"/>
                     <connections>
-                        <segue destination="UBY-8o-1VB" kind="showDetail" identifier="showTimeline" id="j0d-4S-sxJ"/>
+                        <segue destination="UBY-8o-1VB" kind="showDetail" identifier="showTimeline" animates="NO" id="j0d-4S-sxJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2d-dI-oG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
