@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A06D0D0D1D0931FF00E892FB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06D0D0C1D0931FF00E892FB /* UserModel.swift */; };
+		A06D0D0F1D0933A500E892FB /* FollowersListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06D0D0E1D0933A500E892FB /* FollowersListResponse.swift */; };
 		A0EBB4431D07412F0008B277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBB4421D07412F0008B277 /* AppDelegate.swift */; };
 		A0EBB4451D07412F0008B277 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBB4441D07412F0008B277 /* ViewController.swift */; };
 		A0EBB4481D07412F0008B277 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0EBB4461D07412F0008B277 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 		4E91A8774ABD2EB993BDADE8 /* Pods-TwitterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterApp/Pods-TwitterApp.release.xcconfig"; sourceTree = "<group>"; };
 		59893D37291F7F1E4FF93B7D /* Pods_TwitterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFED02CD116D34D6AE5D6E9 /* Pods-TwitterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterApp/Pods-TwitterApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A06D0D0C1D0931FF00E892FB /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		A06D0D0E1D0933A500E892FB /* FollowersListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersListResponse.swift; sourceTree = "<group>"; };
 		A0EBB43F1D07412E0008B277 /* TwitterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EBB4421D07412F0008B277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0EBB4441D07412F0008B277 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A06D0D091D09314D00E892FB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				A06D0D0B1D09315C00E892FB /* responses */,
+				A06D0D0A1D09315400E892FB /* entities */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		A06D0D0A1D09315400E892FB /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				A06D0D0C1D0931FF00E892FB /* UserModel.swift */,
+			);
+			name = entities;
+			sourceTree = "<group>";
+		};
+		A06D0D0B1D09315C00E892FB /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				A06D0D0E1D0933A500E892FB /* FollowersListResponse.swift */,
+			);
+			name = responses;
+			sourceTree = "<group>";
+		};
 		A0EBB4361D07412E0008B277 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +104,7 @@
 		A0EBB4411D07412F0008B277 /* TwitterApp */ = {
 			isa = PBXGroup;
 			children = (
+				A06D0D091D09314D00E892FB /* models */,
 				A0EBB4561D0749740008B277 /* utils */,
 				A0EBB4551D0749680008B277 /* controllers */,
 				A0EBB4421D07412F0008B277 /* AppDelegate.swift */,
@@ -250,9 +280,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0EBB4451D07412F0008B277 /* ViewController.swift in Sources */,
+				A06D0D0F1D0933A500E892FB /* FollowersListResponse.swift in Sources */,
 				A0EBB45C1D074C390008B277 /* TwitterTimelineViewController.swift in Sources */,
 				A0EBB45A1D074B540008B277 /* NSUserDefaultUtils.swift in Sources */,
 				A0EBB4431D07412F0008B277 /* AppDelegate.swift in Sources */,
+				A06D0D0D1D0931FF00E892FB /* UserModel.swift in Sources */,
 				A0EBB4581D074AFB0008B277 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

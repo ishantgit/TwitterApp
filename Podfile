@@ -9,4 +9,5 @@ target 'TwitterApp' do
     pod 'Fabric'
     pod 'TwitterKit'
     pod 'TwitterCore'
+    pod 'ObjectMapper', '~> 1.3'
 end
