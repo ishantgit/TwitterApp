@@ -116,7 +116,7 @@ class SearchTweetsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        self.tableView.estimatedRowHeight = 100.0
+        self.tableView.estimatedRowHeight = 105.0
         return UITableViewAutomaticDimension
     }
     /*
