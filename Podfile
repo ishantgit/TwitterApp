@@ -10,4 +10,5 @@ target 'TwitterApp' do
     pod 'TwitterKit'
     pod 'TwitterCore'
     pod 'ObjectMapper', '~> 1.3'
+    pod 'Kingfisher', '~> 2.4'
 end

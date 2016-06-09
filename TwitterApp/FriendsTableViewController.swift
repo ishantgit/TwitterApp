@@ -41,7 +41,6 @@ class FriendsTableViewController: UITableViewController {
             
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                print("json: \(json)")
                 let responseData = Mapper<FollowersListResponse>().map(json)
                 if let userResponse = responseData{
                     if let list = userResponse.userList{
@@ -78,6 +77,9 @@ class FriendsTableViewController: UITableViewController {
         cell.userScreenName.text = "@\(row.screenName!)"
         cell.followersCount.text =  "\(row.followersCount!) Followers"
         cell.friendsCount.text = "\(row.friendsCount!) Following"
+        if let imageURL = row.profileImageUrl{
+            cell.userImage.kf_setImageWithURL(NSURL(string: imageURL)!)
+        }
         return cell
     }
 

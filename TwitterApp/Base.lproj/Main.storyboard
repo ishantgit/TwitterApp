@@ -86,7 +86,7 @@
         <scene sceneID="Y6d-YE-GPA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oZ1-rT-Mfw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Timeline" id="5ik-Uv-XQj"/>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="TimelineImage" id="5ik-Uv-XQj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1fG-Ov-yHw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -297,7 +297,7 @@
         <scene sceneID="Lcv-X2-gdY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gqu-RM-cM1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Following" id="6aR-uv-8y6"/>
+                    <tabBarItem key="tabBarItem" title="Following" image="UserImage" id="6aR-uv-8y6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ZI-CK-6iu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -316,7 +316,7 @@
         <scene sceneID="UlN-RI-uLT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cln-DY-OUE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Followers" id="f4g-iC-ySO"/>
+                    <tabBarItem key="tabBarItem" title="Followers" image="UserImage" id="f4g-iC-ySO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9bf-OK-Lex">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -332,4 +332,8 @@
             <point key="canvasLocation" x="5279" y="2413"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TimelineImage" width="24" height="24"/>
+        <image name="UserImage" width="24" height="24"/>
+    </resources>
 </document>
