@@ -20,7 +20,6 @@ class TwitterTimelineViewController: TWTRTimelineViewController {
         let userName = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_NAME)
         self.dataSource = TWTRUserTimelineDataSource(screenName: userName!, APIClient: client)
         
-        self.showHomeTwitter()
         // Do any additional setup after loading the view.
     }
     
@@ -35,57 +34,7 @@ class TwitterTimelineViewController: TWTRTimelineViewController {
         }
     }
     
-    func getHomeTimeLine() {
-        var clientError:NSError?
-        let params: Dictionary = Dictionary<String, String>()
-        
-        let request: NSURLRequest! = TWTRAPIClient().URLRequestWithMethod(
-            "GET",
-            URL: "https://api.twitter.com/1.1/statuses/home_timeline.json",
-            parameters: params,
-            error: &clientError)
-        
-        if request != nil {
-            TWTRAPIClient().sendTwitterRequest(request!) {
-                (response, data, connectionError) -> Void in
-                if (connectionError == nil) {
-                    var jsonError : NSError?
-                    if data != nil{
-                        print(data)
-                    }
-                }
-                else {
-                    print("Error: \(connectionError)")
-                }
-            }
-        }
-        else {
-            print("Error: \(clientError)")
-        }
-    }
     
-    private func showHomeTwitter(){
-        let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
-        let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/followers/list.json"
-        let params = ["user_id": userId!]
-        var clientError : NSError?
-        
-        let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: params, error: &clientError)
-        
-        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
-            if connectionError != nil {
-                print("Error: \(connectionError)")
-            }
-            
-            do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                print("json: \(json)")
-            } catch let jsonError as NSError {
-                print("json error: \(jsonError.localizedDescription)")
-            }
-        }
-    }
     
     private func presentLoginController(){
         if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as? ViewController{
@@ -118,14 +67,5 @@ class TwitterTimelineViewController: TWTRTimelineViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

@@ -24,7 +24,7 @@ class UserModel: Mappable{
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
+        id <- map["id_str"]
         name <- map["name"]
         screenName <- map["screen_name"]
         location <- map["location"]

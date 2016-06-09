@@ -13,6 +13,7 @@ class FollowersListResponse: Mappable {
     
     var nextCursor: String?
     var userList:[UserModel]?
+    
     required init?(_ map: Map) {
         
     }
