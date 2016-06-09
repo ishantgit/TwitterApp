@@ -28,59 +28,6 @@
             </objects>
             <point key="canvasLocation" x="3949" y="2006"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="BhQ-Lg-Rn7">
-            <objects>
-                <tableViewController id="xUq-PT-Aia" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8c-tM-zpL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="d3d-91-jqL">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d3d-91-jqL" id="Bg3-U6-Reg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="xUq-PT-Aia" id="5FJ-Th-O9C"/>
-                            <outlet property="delegate" destination="xUq-PT-Aia" id="apk-oY-UB6"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="b1T-mW-bul">
-                        <barButtonItem key="rightBarButtonItem" title="POST" id="Tz6-Qe-eJr">
-                            <connections>
-                                <action selector="postTweetTapped:" destination="xUq-PT-Aia" id="0Ow-Su-y5p"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ccB-VL-is3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5790" y="693"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="EFO-Nh-l3n">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UBY-8o-1VB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DUN-kh-Sbe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xUq-PT-Aia" kind="relationship" relationship="rootViewController" id="c00-Fn-nxL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0oN-gB-9hO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4978" y="693"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="edY-jS-jDd">
             <objects>
@@ -346,11 +293,11 @@
             </objects>
             <point key="canvasLocation" x="6967" y="2876"/>
         </scene>
-        <!--Friends-->
+        <!--Following-->
         <scene sceneID="Lcv-X2-gdY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gqu-RM-cM1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="6aR-uv-8y6"/>
+                    <tabBarItem key="tabBarItem" title="Following" id="6aR-uv-8y6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ZI-CK-6iu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
