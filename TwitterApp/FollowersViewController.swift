@@ -15,6 +15,8 @@ class FollowersViewController: UITableViewController {
 
     
     var userList = [UserModel]()
+    var userListResponse: FollowersListResponse?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Followers"
@@ -26,9 +28,15 @@ class FollowersViewController: UITableViewController {
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
         let statusesShowEndpoint = "https://api.twitter.com/1.1/followers/list.json"
-        let params = ["user_id": userId!]
+        var params = ["user_id": userId!]
         var clientError : NSError?
-        
+        if let response = self.userListResponse{
+            if let cursor = response.nextCursor{
+                params["cursor"] = cursor
+            }else{
+                return
+            }
+        }
         let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: params, error: &clientError)
         
         client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
@@ -40,8 +48,9 @@ class FollowersViewController: UITableViewController {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
                 let responseData = Mapper<FollowersListResponse>().map(json)
                 if let userResponse = responseData{
+                    self.userListResponse = userResponse
                     if let list = userResponse.userList{
-                        self.userList = list
+                        self.userList += list
                         self.tableView.reloadData()
                     }
                 }

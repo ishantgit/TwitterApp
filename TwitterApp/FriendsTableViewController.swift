@@ -13,6 +13,7 @@ import ObjectMapper
 class FriendsTableViewController: UITableViewController {
 
     var userList = [UserModel]()
+    var userListResponse: FollowersListResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,14 @@ class FriendsTableViewController: UITableViewController {
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
         let statusesShowEndpoint = "https://api.twitter.com/1.1/friends/list.json"
-        let params = ["user_id": userId!]
+        var params = ["user_id": userId!]
+        if let response = self.userListResponse{
+            if let cursor = response.nextCursor{
+                params["cursor"] = cursor
+            }else{
+                return
+            }
+        }
         var clientError : NSError?
         
         let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: params, error: &clientError)
@@ -43,8 +51,9 @@ class FriendsTableViewController: UITableViewController {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
                 let responseData = Mapper<FollowersListResponse>().map(json)
                 if let userResponse = responseData{
+                    self.userListResponse = userResponse
                     if let list = userResponse.userList{
-                        self.userList = list
+                        self.userList += list
                         self.tableView.reloadData()
                     }
                 }
@@ -71,6 +80,9 @@ class FriendsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row  == self.userList.count - 1{
+            self.getFollowersList()
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier("UserViewTableViewCell", forIndexPath: indexPath) as! UserViewTableViewCell
         let row = userList[indexPath.row]
         cell.userName.text = row.name!
