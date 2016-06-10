@@ -18,7 +18,7 @@ class TwitterTimelineViewController: TWTRTimelineViewController {
         let client = TWTRAPIClient()
         //let session = Twitter.sharedInstance()
         let userName = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_NAME)
-        self.dataSource = TWTRUserTimelineDataSource(screenName: "Fabric", APIClient: client)
+        self.dataSource = TWTRUserTimelineDataSource(screenName: userName!, APIClient: client)
         
         // Do any additional setup after loading the view.
     }

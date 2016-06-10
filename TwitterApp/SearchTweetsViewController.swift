@@ -40,6 +40,9 @@ class SearchTweetsViewController: UITableViewController {
         //3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
+            if textField.text!.isEmpty{
+                return
+            }
             self.searchListResponse = nil
             self.searchQuery = textField.text!
             self.statusList.removeAll()

@@ -83,8 +83,60 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
         let cell = self.tableView.dequeueReusableCellWithIdentifier("TimelineTableViewCell", forIndexPath: indexPath) as! TimelineTableViewCell
         let row = self.tweetList[indexPath.row]
         cell.tweetLabel.text = row.text!
-        
+        cell.onFavButtonTapped = {
+            self.addToFav(row.id!)
+        }
+        cell.onRetweetButtonTapped = {
+            self.retweetStatus(row.id!)
+        }
         return cell
+    }
+    
+    private func retweetStatus(tweetId: String){
+        let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
+        let client = TWTRAPIClient(userID: userId!)
+        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/retweet/"+tweetId+".json"
+        let params = [String: AnyObject]()
+        var clientError : NSError?
+        let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                if data != nil {
+                    print("added to fav list")
+                    print(response)
+                }else{
+                    print("data is nil")
+                }
+            }
+        }
+    }
+    private func addToFav(tweetId: String){
+        let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
+        let client = TWTRAPIClient(userID: userId!)
+        let statusesShowEndpoint = "https://api.twitter.com/1.1/favorites/create.json"
+        let params = ["id": tweetId]
+        var clientError : NSError?
+        let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                if data != nil {
+                    print("added to fav list")
+                }else{
+                    print("data is nil")
+                }
+            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
