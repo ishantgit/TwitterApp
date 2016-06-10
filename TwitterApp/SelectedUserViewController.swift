@@ -100,14 +100,26 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
         
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showFollowers"{
+            if let controller = segue.destinationViewController as? UserFollowersTableViewController{
+                controller.userModel = self.selectedUser
+                controller.showFollowers = true
+            }
+        }
+        else if segue.identifier == "showFollowing"{
+            if let controller = segue.destinationViewController as? UserFollowersTableViewController{
+                controller.userModel = self.selectedUser
+                controller.showFollowers = false
+            }
+        }
     }
-    */
+ 
 
 }
