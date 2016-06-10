@@ -89,5 +89,16 @@ class FollowersViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "userDetailSegue"{
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let user = self.userList[indexPath.row]
+                if let controller = segue.destinationViewController as? SelectedUserViewController{
+                    controller.selectedUser = user
+                    controller.hidesBottomBarWhenPushed = true
+                }
+            }
+        }
+    }
 
 }

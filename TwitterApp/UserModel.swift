@@ -18,6 +18,8 @@ class UserModel: Mappable{
     var friendsCount:Int?
     var followersCount: Int?
     var profileImageUrl: String?
+    var followingCount: Int?
+    
     
     required init?(_ map: Map) {
         
@@ -31,5 +33,6 @@ class UserModel: Mappable{
         followersCount <- map["followers_count"]
         friendsCount <- map["friends_count"]
         profileImageUrl <- map["profile_image_url"]
+        followingCount <- map["friends_count"]
     }
 }
