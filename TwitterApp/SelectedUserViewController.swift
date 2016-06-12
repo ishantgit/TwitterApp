@@ -89,6 +89,9 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
         cell.onRetweetButtonTapped = {
             self.retweetStatus(row.id!)
         }
+        cell.onReplyButtonTapped = {
+            self.getTweetText(row.id!)
+        }
         return cell
     }
     
@@ -107,7 +110,7 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
             
             do {
                 if data != nil {
-                    print("added to fav list")
+                    print("retweeted")
                     print(response)
                 }else{
                     print("data is nil")
@@ -115,6 +118,7 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
             }
         }
     }
+    
     private func addToFav(tweetId: String){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
@@ -138,7 +142,52 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
         }
 
     }
+    
+    private func getTweetText(tweetId: String){
+        let alert = UIAlertController(title: "Search", message: nil, preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = ""
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            self.replyToTweet(tweetId, text: textField.text!)
+    
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+    
+    }
+    
+    private func replyToTweet(tweetId: String,text: String){
+        let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
+        let client = TWTRAPIClient(userID: userId!)
+        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/update.json"
+        var params = [String:AnyObject]()
+        params["status"] = text
+        params["in_reply_to_status_id"] = tweetId
+        var clientError : NSError?
+        let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                if data != nil {
+                    print("added to fav list")
+                }else{
+                    print("data is nil")
+                }
+            }
+        }
 
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
