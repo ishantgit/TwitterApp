@@ -154,7 +154,7 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
         //3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
-            self.replyToTweet(tweetId, text: textField.text!)
+            self.replyToTweet(tweetId, text: "@\(self.selectedUser!.screenName!)" + textField.text!)
     
         }))
         
