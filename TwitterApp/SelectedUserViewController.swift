@@ -45,7 +45,7 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
     func getUserDetail(){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.USER_TIMELINE
         var params = [String:AnyObject]()
         if let user = self.selectedUser{
             params["user_id"] =  user.id!
@@ -98,7 +98,7 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
     private func retweetStatus(tweetId: String){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/retweet/"+tweetId+".json"
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.getRetweetURL(tweetId)
         let params = [String: AnyObject]()
         var clientError : NSError?
         let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
@@ -122,7 +122,7 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
     private func addToFav(tweetId: String){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/favorites/create.json"
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.MARK_FAV
         let params = ["id": tweetId]
         var clientError : NSError?
         let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
@@ -166,7 +166,7 @@ class SelectedUserViewController: UIViewController,UITableViewDelegate, UITableV
     private func replyToTweet(tweetId: String,text: String){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/update.json"
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.RETWEET
         var params = [String:AnyObject]()
         params["status"] = text
         params["in_reply_to_status_id"] = tweetId

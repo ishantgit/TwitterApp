@@ -27,7 +27,7 @@ class FollowersViewController: UITableViewController {
     private func getFollowersList(){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/followers/list.json"
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.GET_FOLLOWERS
         var params = ["user_id": userId!]
         var clientError : NSError?
         if let response = self.userListResponse{

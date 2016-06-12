@@ -59,7 +59,7 @@ class SearchTweetsViewController: UITableViewController {
     private func searchText(text: String){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/search/tweets.json"
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.SEARCH_TWEETS
         var params = ["q": text]
         if let response = self.searchListResponse{
             if let nextResult = response.nextResult{

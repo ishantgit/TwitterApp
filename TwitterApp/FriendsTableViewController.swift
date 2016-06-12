@@ -29,7 +29,7 @@ class FriendsTableViewController: UITableViewController {
     private func getFollowersList(){
         let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
         let client = TWTRAPIClient(userID: userId!)
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/friends/list.json"
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.GET_FOLLOWING
         var params = ["user_id": userId!]
         if let response = self.userListResponse{
             if let cursor = response.nextCursor{

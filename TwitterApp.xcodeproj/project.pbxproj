@@ -19,6 +19,7 @@
 		A0897C281D0AC9C6007EEE97 /* SelectedUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0897C271D0AC9C6007EEE97 /* SelectedUserViewController.swift */; };
 		A0897C2A1D0AFAB6007EEE97 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0897C291D0AFAB6007EEE97 /* TimelineTableViewCell.swift */; };
 		A0897C2C1D0B2913007EEE97 /* UserFollowersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0897C2B1D0B2913007EEE97 /* UserFollowersTableViewController.swift */; };
+		A0EB0C011D0DF9A7006FD0E8 /* URIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EB0C001D0DF9A7006FD0E8 /* URIConstants.swift */; };
 		A0EBB4431D07412F0008B277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBB4421D07412F0008B277 /* AppDelegate.swift */; };
 		A0EBB4451D07412F0008B277 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBB4441D07412F0008B277 /* ViewController.swift */; };
 		A0EBB4481D07412F0008B277 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0EBB4461D07412F0008B277 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		A0897C271D0AC9C6007EEE97 /* SelectedUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedUserViewController.swift; sourceTree = "<group>"; };
 		A0897C291D0AFAB6007EEE97 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		A0897C2B1D0B2913007EEE97 /* UserFollowersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowersTableViewController.swift; sourceTree = "<group>"; };
+		A0EB0C001D0DF9A7006FD0E8 /* URIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URIConstants.swift; sourceTree = "<group>"; };
 		A0EBB43F1D07412E0008B277 /* TwitterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EBB4421D07412F0008B277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0EBB4441D07412F0008B277 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				A0EBB4571D074AFB0008B277 /* Constants.swift */,
 				A0EBB4591D074B540008B277 /* NSUserDefaultUtils.swift */,
+				A0EB0C001D0DF9A7006FD0E8 /* URIConstants.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				A0EBB45C1D074C390008B277 /* TwitterTimelineViewController.swift in Sources */,
 				A06D0D161D095DCA00E892FB /* FriendsTableViewController.swift in Sources */,
 				A06D0D121D093FB800E892FB /* UserViewTableViewCell.swift in Sources */,
+				A0EB0C011D0DF9A7006FD0E8 /* URIConstants.swift in Sources */,
 				A06D0D181D09B39900E892FB /* SearchTweetsViewController.swift in Sources */,
 				A0EBB45A1D074B540008B277 /* NSUserDefaultUtils.swift in Sources */,
 				A0EBB4431D07412F0008B277 /* AppDelegate.swift in Sources */,
