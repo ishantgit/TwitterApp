@@ -16,6 +16,7 @@
 		A06D0D1A1D09C3F500E892FB /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06D0D191D09C3F500E892FB /* Status.swift */; };
 		A06D0D1C1D09C5CC00E892FB /* SearchTweetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06D0D1B1D09C5CC00E892FB /* SearchTweetResponse.swift */; };
 		A06D0D1E1D09C92700E892FB /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06D0D1D1D09C92700E892FB /* TweetTableViewCell.swift */; };
+		A081D2381D0EB65F00B797EA /* SearchTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081D2371D0EB65F00B797EA /* SearchTweetTableViewCell.swift */; };
 		A0897C281D0AC9C6007EEE97 /* SelectedUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0897C271D0AC9C6007EEE97 /* SelectedUserViewController.swift */; };
 		A0897C2A1D0AFAB6007EEE97 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0897C291D0AFAB6007EEE97 /* TimelineTableViewCell.swift */; };
 		A0897C2C1D0B2913007EEE97 /* UserFollowersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0897C2B1D0B2913007EEE97 /* UserFollowersTableViewController.swift */; };
@@ -44,6 +45,7 @@
 		A06D0D191D09C3F500E892FB /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		A06D0D1B1D09C5CC00E892FB /* SearchTweetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTweetResponse.swift; sourceTree = "<group>"; };
 		A06D0D1D1D09C92700E892FB /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		A081D2371D0EB65F00B797EA /* SearchTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTweetTableViewCell.swift; sourceTree = "<group>"; };
 		A0897C271D0AC9C6007EEE97 /* SelectedUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedUserViewController.swift; sourceTree = "<group>"; };
 		A0897C291D0AFAB6007EEE97 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		A0897C2B1D0B2913007EEE97 /* UserFollowersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowersTableViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				A06D0D111D093FB800E892FB /* UserViewTableViewCell.swift */,
 				A06D0D1D1D09C92700E892FB /* TweetTableViewCell.swift */,
 				A0897C291D0AFAB6007EEE97 /* TimelineTableViewCell.swift */,
+				A081D2371D0EB65F00B797EA /* SearchTweetTableViewCell.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				A06D0D0D1D0931FF00E892FB /* UserModel.swift in Sources */,
 				A0EBB4581D074AFB0008B277 /* Constants.swift in Sources */,
 				A0897C2C1D0B2913007EEE97 /* UserFollowersTableViewController.swift in Sources */,
+				A081D2381D0EB65F00B797EA /* SearchTweetTableViewCell.swift in Sources */,
 				A06D0D1A1D09C3F500E892FB /* Status.swift in Sources */,
 				A06D0D1E1D09C92700E892FB /* TweetTableViewCell.swift in Sources */,
 				A0897C281D0AC9C6007EEE97 /* SelectedUserViewController.swift in Sources */,

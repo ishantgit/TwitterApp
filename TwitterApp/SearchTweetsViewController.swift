@@ -103,25 +103,130 @@ class SearchTweetsViewController: UITableViewController {
         if indexPath.row == self.statusList.count - 1{
             self.searchText(self.searchQuery!)
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetTableViewCell", forIndexPath: indexPath) as! TweetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SearchTweetTableViewCell", forIndexPath: indexPath) as! SearchTweetTableViewCell
         let row = self.statusList[indexPath.row]
-        cell.tweetText.text = row.text!
+        cell.tweetLabel.text = row.text!
         if let user = row.tweetedBy{
             if user.screenName != nil {
-                cell.tweetBy.text = "@\(user.screenName!)"
+                cell.screenName.text = "@\(user.screenName!)"
             }
             if let imageUrl = user.profileImageUrl{
                 cell.userImage.kf_setImageWithURL(NSURL(string: imageUrl)!)
             }
+        }
+        cell.onFavButtonTapped = {
+            self.addToFav(row.id!)
+        }
+        cell.onReplyButtonTapped = {
+            self.getTweetText(row.id!, screenName: (row.tweetedBy?.screenName!)!)
+        }
+        cell.onRetweetButtonTapped = {
+            self.retweetStatus(row.id!)
         }
         cell.retweetCount.text = "Retweeted \(row.retweetCount!)"
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        self.tableView.estimatedRowHeight = 105.0
+        self.tableView.estimatedRowHeight = 135.0
         return UITableViewAutomaticDimension
     }
+    
+    
+    private func retweetStatus(tweetId: String){
+        let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
+        let client = TWTRAPIClient(userID: userId!)
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.getRetweetURL(tweetId)
+        let params = [String: AnyObject]()
+        var clientError : NSError?
+        let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                if data != nil {
+                    print("retweeted")
+                    print(response)
+                }else{
+                    print("data is nil")
+                }
+            }
+        }
+    }
+    
+    private func addToFav(tweetId: String){
+        let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
+        let client = TWTRAPIClient(userID: userId!)
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.MARK_FAV
+        let params = ["id": tweetId]
+        var clientError : NSError?
+        let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                if data != nil {
+                    print("added to fav list")
+                }else{
+                    print("data is nil")
+                }
+            }
+        }
+        
+    }
+    
+    private func getTweetText(tweetId: String,screenName: String){
+        let alert = UIAlertController(title: "Search", message: nil, preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = ""
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            self.replyToTweet(tweetId, text: "@\(screenName)" + textField.text!)
+            
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    private func replyToTweet(tweetId: String,text: String){
+        let userId = NSUserDefaultUtils.retrieveStringValue(NSUserDefaultUtils.USER_ID)
+        let client = TWTRAPIClient(userID: userId!)
+        let statusesShowEndpoint = URIConstants.BASE_URL + URIConstants.RETWEET
+        var params = [String:AnyObject]()
+        params["status"] = text
+        params["in_reply_to_status_id"] = tweetId
+        var clientError : NSError?
+        let request = client.URLRequestWithMethod("POST", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                if data != nil {
+                    print("added to fav list")
+                }else{
+                    print("data is nil")
+                }
+            }
+        }
+        
+    }
+
     /*
     // MARK: - Navigation
 

@@ -53,16 +53,16 @@
         <scene sceneID="IvV-eh-apW">
             <objects>
                 <tableViewController id="HYR-ls-XnF" customClass="SearchTweetsViewController" customModule="TwitterApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" id="uGy-Ha-lBB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="28" sectionFooterHeight="28" id="uGy-Ha-lBB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetTableViewCell" rowHeight="105" id="ok4-8w-a9Z" customClass="TweetTableViewCell" customModule="TwitterApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="105"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTweetTableViewCell" rowHeight="135" id="ok4-8w-a9Z" customClass="SearchTweetTableViewCell" customModule="TwitterApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="135"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ok4-8w-a9Z" id="Ajb-T7-Hvm">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="104"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="134"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DD0-vF-5GV">
@@ -114,21 +114,57 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSA-Fk-TE1">
+                                            <rect key="frame" x="111" y="95" width="46" height="30"/>
+                                            <state key="normal" title="Retweet"/>
+                                            <connections>
+                                                <action selector="retweetTapped:" destination="ok4-8w-a9Z" eventType="touchUpInside" id="3Vy-95-Nk5"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TS-2n-g5o">
+                                            <rect key="frame" x="165" y="95" width="46" height="30"/>
+                                            <state key="normal" title="Fav"/>
+                                            <connections>
+                                                <action selector="onFavButtonTapped:" destination="ok4-8w-a9Z" eventType="touchUpInside" id="4Dd-7z-zYc"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ac6-Fa-NGd">
+                                            <rect key="frame" x="219" y="95" width="46" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="VjU-dp-s6U"/>
+                                            </constraints>
+                                            <state key="normal" title="Reply"/>
+                                            <connections>
+                                                <action selector="onReplyButtonTapped:" destination="ok4-8w-a9Z" eventType="touchUpInside" id="8FC-on-2mn"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="ac6-Fa-NGd" firstAttribute="height" secondItem="7TS-2n-g5o" secondAttribute="height" id="4Ao-9r-cPm"/>
+                                        <constraint firstItem="7TS-2n-g5o" firstAttribute="top" secondItem="KSA-Fk-TE1" secondAttribute="top" id="ILQ-CN-3KI"/>
+                                        <constraint firstItem="ac6-Fa-NGd" firstAttribute="height" secondItem="KSA-Fk-TE1" secondAttribute="height" id="ROv-DW-dqr"/>
                                         <constraint firstItem="mde-fL-V9O" firstAttribute="top" secondItem="DD0-vF-5GV" secondAttribute="top" id="Slb-Yf-nYp"/>
+                                        <constraint firstItem="7TS-2n-g5o" firstAttribute="bottom" secondItem="KSA-Fk-TE1" secondAttribute="bottom" id="UjY-wU-GVh"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="UHe-cU-BkY" secondAttribute="bottom" constant="9" id="Vkw-DC-we3"/>
+                                        <constraint firstItem="ac6-Fa-NGd" firstAttribute="top" secondItem="UHe-cU-BkY" secondAttribute="bottom" constant="8" id="Y6C-JF-nXY"/>
                                         <constraint firstItem="dVB-OF-IcI" firstAttribute="leading" secondItem="mde-fL-V9O" secondAttribute="leading" id="cDy-OU-0Ht"/>
                                         <constraint firstItem="UHe-cU-BkY" firstAttribute="leading" secondItem="mde-fL-V9O" secondAttribute="leading" id="dOD-5Z-ZUw"/>
                                         <constraint firstItem="dVB-OF-IcI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mde-fL-V9O" secondAttribute="bottom" constant="8" id="fLh-Rd-Wfw"/>
                                         <constraint firstItem="DD0-vF-5GV" firstAttribute="top" secondItem="Ajb-T7-Hvm" secondAttribute="topMargin" id="gCC-Dc-sCo"/>
+                                        <constraint firstItem="ac6-Fa-NGd" firstAttribute="top" secondItem="KSA-Fk-TE1" secondAttribute="top" id="hBG-7W-pKK"/>
+                                        <constraint firstItem="KSA-Fk-TE1" firstAttribute="leading" secondItem="UHe-cU-BkY" secondAttribute="leading" id="iCL-hl-Yx6"/>
+                                        <constraint firstItem="ac6-Fa-NGd" firstAttribute="bottom" secondItem="KSA-Fk-TE1" secondAttribute="bottom" id="igJ-c6-WeK"/>
                                         <constraint firstItem="mde-fL-V9O" firstAttribute="leading" secondItem="DD0-vF-5GV" secondAttribute="trailing" constant="8" id="ovb-do-65c"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="UHe-cU-BkY" secondAttribute="bottom" constant="9" id="qfW-tB-4Le"/>
+                                        <constraint firstItem="7TS-2n-g5o" firstAttribute="leading" secondItem="KSA-Fk-TE1" secondAttribute="trailing" constant="8" id="rF4-hn-bkZ"/>
+                                        <constraint firstItem="ac6-Fa-NGd" firstAttribute="leading" secondItem="7TS-2n-g5o" secondAttribute="trailing" constant="8" id="rem-AC-DsT"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KSA-Fk-TE1" secondAttribute="bottom" constant="1" id="rlc-Uz-gZR"/>
                                         <constraint firstItem="UHe-cU-BkY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dVB-OF-IcI" secondAttribute="bottom" constant="8" id="s5C-VA-xA1"/>
                                         <constraint firstItem="DD0-vF-5GV" firstAttribute="leading" secondItem="Ajb-T7-Hvm" secondAttribute="leadingMargin" id="uu2-oA-PG8"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="Vkw-DC-we3"/>
                                             <exclude reference="qfW-tB-4Le"/>
                                         </mask>
                                     </variation>
@@ -142,10 +178,10 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outlet property="retweetCount" destination="UHe-cU-BkY" id="VaE-QV-jHm"/>
-                                    <outlet property="tweetBy" destination="dVB-OF-IcI" id="iad-6R-KTx"/>
-                                    <outlet property="tweetText" destination="mde-fL-V9O" id="SQN-zF-n5C"/>
-                                    <outlet property="userImage" destination="DD0-vF-5GV" id="ccU-9a-L44"/>
+                                    <outlet property="retweetCount" destination="UHe-cU-BkY" id="J5Q-BT-5aq"/>
+                                    <outlet property="screenName" destination="dVB-OF-IcI" id="Yy5-o1-xHB"/>
+                                    <outlet property="tweetLabel" destination="mde-fL-V9O" id="mK2-gW-vG3"/>
+                                    <outlet property="userImage" destination="DD0-vF-5GV" id="SzP-Jf-Hrg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
